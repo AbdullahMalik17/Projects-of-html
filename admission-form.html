@@ -2,23 +2,36 @@
 <html>
     <head>
         <title>Admission Form</title> 
-        <link href="admission.css" type="text/css" rel="stylesheet">
+        <style>
+            .h1{
+                color:black;
+                background-color: rgb(152, 150, 150);
+            }
+            button{
+              background-color: rgb(152, 150, 150);
+              border-radius: 5px;
+              block-size:auto;
+            }
+        </style>
+
     </head>
     <body>
-        <form method="get">
+        <!--Place holder is used to write any thing in the input tag.-->
+        <form method="get" action="muhammadabdullah51700@gmail.com">
         <h1 class="h1">Admission Form</h1>
         <h3><u>Punjab Group of College.</u></h3>
         <p>To admission in Punjab college.Fill these requirements.<br>
-         Boys campus: <input type="text" id="campus" placeholder="Campus name"> Girls campus: <input type="text " id="campus" placeholder="Campus name" ></p>
+         Boys campus: <input type="text" id="campus" placeholder="Campus name" required> Girls campus: <input type="text " id="campus" placeholder="Campus name"  ></p>
          <hr>
-         <h3><u>Which field do you want to enter?</u> </h3>
+         <!--Field-->
+         <h3><u>Which field do you want to enter :-</u> </h3>
         F.Sc(pre-Medical)<button ></button><br>
         F.Sc(pre-Engg)<button ></button><br>  
         ICS(Math,phy)<button></button><br>
         I.Com.IT<button></button></p>
         <hr>
-        <h3><u>Candidate's details</u></h3>
-        <input type="image" class="image" scr="D:\html_learning\people-icon-design-avatar-icon-person-icons-people-icons-are-set-in-trendy-flat-style-user-icon-set-vector.jpg" alt="Image" align="right">
+        <!--Canditade detail-->
+        <h3><u>Candidate's details :-</u></h3>
         <p>
         Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Name" required><br>
         Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Address" required ><br> 
@@ -28,7 +41,8 @@
         Mobile No: &nbsp;&nbsp;<input type="text" placeholder="Mobile number" required>
     </p>
     <hr>
-    <h3><u>Father's/Guardian's details</u></h3> 
+    <!--Father detail-->
+    <h3><u>Father's/Guardian's details :-</u></h3> 
  <p>
       Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" placeholder="Name" required><br>
       Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" placeholder="Address" required><br>
@@ -37,12 +51,13 @@
       Phone number: <input type="text" placeholder="Phone Number" required>
     </p>
     <hr>
+    <!--Academic detail-->
     <h3><u>
-        Academic details</u></h3>
+        Academic details :-</u></h3>
     <p>
-    Name Of The Institute: <input type="text" placeholder="Name of institute" required>
+    Name Of The Institute :- <input type="text" placeholder="Name of institute" required>
     </p><hr>
-    <h3><u>Examination Result</u></h3> 
+    <h3><u>Examination Result :-</u></h3> 
     <table border="2px">
     <tr>
         <th>9th Class</th><td><input type="text" placeholder="Enter Marks" required></td><td><input type="text" placeholder="Enter roll no" required></td><td><input type="text" placeholder="Enter grade"></td>
