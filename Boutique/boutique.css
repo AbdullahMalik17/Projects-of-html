@@ -1,0 +1,32 @@
+.b{
+    font-size: 50px;
+    text-align: center;
+    color:rgb(184, 44, 184);
+}
+b{
+    text-align: center;
+    color: rgb(184, 44, 184);
+    font-size: 50px;
+}
+pre{
+    color:rgb(66, 64, 64);
+    font-size:larger;
+}
+
+Button{
+   font-size: xx-large;
+background-color: rgb(225, 56, 225);
+align-self: center;
+}
+#button{
+    border-radius: 8px;
+    background-color: red;
+}
+
+.divide{
+    background-color: rgb(177, 177, 177);
+     font-size:large;
+}
+body{
+    color:rgba(254, 252, 252, 0.941);
+} 

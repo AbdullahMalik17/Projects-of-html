@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Boutique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #f8f8f8;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        nav a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #ff4500;
+        }
+        section {
+            padding: 20px;
+        }
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .product-item {
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 250px;
+        }
+        .product-item img {
+            width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to My Boutique</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">About Us</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section>
+    <h2>Featured Products</h2>
+    <div class="product">
+        <div class="product-item">
+            <img src="dress1.jpg" alt="Dress">
+            <h3>Dress 1</h3>
+            <p>$50.00</p>
+        </div>
+        <div class="product-item">
+            <img src="dress2.jpg" alt="Dress">
+            <h3>Dress 2</h3>
+            <p>$45.00</p>
+        </div>
+        <div class="product-item">
+            <img src="dress3.jpg" alt="Dress">
+            <h3>Dress 3</h3>
+            <p>$55.00</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 My Boutique. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
