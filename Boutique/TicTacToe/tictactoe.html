@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title><style>
+        *{
+            padding:0%;
+            margin:0%;
+        }
+        .section{
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        .game{
+            height:140px;
+            width:140px;
+            border: 1px solid black;
+            text-align: center;
+             margin:3px
+        }
+        .game:hover{
+            background-color: #ccc;
+        }
+        
+    </style>
+</head>
+<body><div class="section">
+    <div class="game" id="cell-1"></div>
+    <div class="game" id="cell-2"></div>
+    <div class="game" id="cell-3"></div>
+    </div>
+    <div class="section">
+    <div class="game" id="cell-4"></div>
+    <div class="game" id="cell-5"></div>
+    <div class="game" id="cell-6"></div>
+    </div><div class="section">
+    <div class="game" id="cell-7"></div>
+    <div class="game" id="cell-8"></div>
+    <div class="game" id="cell-9"></div>
+</div>
+<div>
+    <p id="turn"></p>
+    <button>Submit</button>
+</div><script>
+    let board=["","","","","","","","",""]
+    let player="X"
+    let gameover=false;
+    function rendering(){
+    for(let i=0;board.length;i++){
+        document.getElementById(cell-$(i)).innerText=board[i];
+    }
+    document.getElementById("turn").innerText=player;
+    }
+    function handleclick(event){
+        if(gameover){
+            let cellindex=event.target.id.spilt('-')[1]
+        }if(board[cellindex!==""]){
+            return board[cellindex]=player;
+        }
+        rendering()
+    player=player==="X"?"O":"X";
+    }
+    function CheckWinner(){
+        let CheckWinningcombition=[
+            [0,1,2],
+            [3,4,5],
+            [6,7,8],
+            [0,3,6]        ]
+    }
+
+    </script>
+</body>
+</html>
