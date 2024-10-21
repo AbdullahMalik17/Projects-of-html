@@ -10,7 +10,7 @@
     padding: none;
     margin:none ;
   }
-  div{
+  #image{
     display :flex;
     padding: none;
     margin:none;
@@ -50,14 +50,19 @@ footer{
   width: 300px; 
 }#contact{
   text-decoration: underline blue;
-}
-main{
-  display:flex;
+}#main{
+box-shadow: black;
+margin-top: 2px;
+margin-bottom: 3px;
+margin-right: 5px;
+margin-left: 5px;
+border: 1px black solid;
+background-color: chocolate;
 }
 </style>
 </head>
 <body>
-  <div>
+  <div id="image">
   <h2>Athar Farm</h2>
   <nav class="nav" style="text-align: right;">
     <a href="#home">Home</a>
@@ -65,19 +70,21 @@ main{
     <a href>About us</a>
   </nav>
   </div>
-  <main><p>His name is Muhammad Athar . He is the owner of Athar Farm we give the name of our farm by dedicayed by Mr. Athar.
+  <div id="main">
+    <p>His name is Muhammad Athar . He is the owner of Athar Farm we give the name of our farm by dedicayed by Mr. Athar .
     We started worked with an incubator which incubate about 240 chicks . In the Early days , we lost or chicks due our mistake . 
     We failed in giving the proper temperature . During this session , we earned about 1 lakh . We have all qualities of chicks .
     We all types hens . We may book our order in the <a href="About.html" id="contact">Contact .</a> 
-<img src="IMG_8964.JPG"id="img">
-  </p></main>
-<Footer><nav class="nav1"><a name="home"></a>
-<a class="a"href="#home">Home</a><br>
+   </p>
+  </div>
+<Footer>
+  <nav class="nav1"><a name="home"></a>
+    <a class="a"href="#home">Home</a><br>
     <a  class ="a"href="About.html">Contact Us</a><br>
     <a class="a"href="#About">About Us</a><br>
     <a class="a"href="#Imform me">Help</a>
     <H3 style="color: #fcfbfb;">Copyright &copy;</H3>           
-  </nav>
+   </nav>
 </Footer>
 </body>
 </html>
