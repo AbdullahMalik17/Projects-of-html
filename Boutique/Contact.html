@@ -1,54 +1,610 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            <link rel="icon" type="i"
-            Contact
-        </title>
-        <style>
-            *{
-                margin:0%;
-                padding:0%;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Unique Boutique</title>
+    <meta name="description" content="Get in touch with Unique Boutique for custom orders, inquiries, and feedback. We're here to help you find the perfect fashion solution.">
+    <meta name="keywords" content="contact, boutique, custom orders, fashion inquiry, customer service">
+    <meta name="author" content="Unique Boutique">
+    <link rel="icon" href="WhatsApp Image 2024-04-28 at 11.55.06_4d89aedc.jpg" type="image/jpeg">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: #ffd700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+        }
+
+        /* Contact Form */
+        .contact-form-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Contact Info Sidebar */
+        .contact-info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-info-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-details h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .contact-details p {
+            color: #666;
+            margin: 0;
+        }
+
+        .contact-details a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Business Hours */
+        .business-hours {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .business-hours h3 {
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin: 3rem auto;
+            max-width: 1200px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #ffd700;
+            color: #333;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            margin-top: 2rem;
+            color: #bdc3c7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
             }
-         header{
-       background-color: rgb(129, 128, 128);
-        color:black;
-        }       
-        nav{
-            margin-left: 8px;
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
-        a{
-            color: black;
-            margin:9px;
-            text-align: right;
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-form-section,
+            .contact-info-section {
+                padding: 1.5rem;
+            }
         }
-        .b{
-            font-size: xx-large;
-        }
-        </style>
-    </head>
-    <body><header>
-        <p> <b class="b">Unique&nbsp;</b> <b class="b">Boutique</b></p>
-        <nav>
-            <a href="#Home" id="a">Home</a>
-            <a href="#catagories"id="c">Catagories</a>
-            <a href="Contact.html"id="d">Contact-us</a>
-            <a href="#Aboutus"id="e">About-us</a>
-        </nav>
-        <a name="Home"></a>
-        <a name="catagories"></a>
-        </header>
-<hr>
-<img src="C:\Users\Abdullah\Downloads\van_3496597.png"height="100" width="90">
-<form method="get" action="abdullahmalik87678@gmail.com">
-    Customer's name:<input type="text" placeholder="Name" size="15"><br>
-    Enter Your Order:<input type="text " placeholder="Order" size="15"><br>
-    Enter Address  :<input type="text" placeholder="Address" size="15"><br>
-    Give us a feedback:<br>
-    <textarea cols="40"placeholder="Give comment" height="7" widht="7" rows="8" ></textarea>
-    <br>
-    <button type="submit"value="Submit">Submit</button>   
-</form>
-        
-    </body>
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="app.html" class="logo">Unique <span>Boutique</span></a>
+            <nav>
+                <ul>
+                    <li><a href="app.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="app.html#products"><i class="fas fa-tshirt"></i> Products</a></li>
+                    <li><a href="Contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="app.html#about"><i class="fas fa-info-circle"></i> About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <h1>Get In Touch</h1>
+        <p>We'd love to hear from you! Send us a message and we'll respond as soon as possible.</p>
+    </section>
+
+    <div class="main-container">
+        <main class="contact-form-section">
+            <h2 class="section-title">Send Us a Message</h2>
+            
+            <form action="#" method="POST" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select a subject</option>
+                        <option value="custom-order">Custom Order</option>
+                        <option value="product-inquiry">Product Inquiry</option>
+                        <option value="sizing-help">Sizing Help</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="general">General Inquiry</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderDetails">Order Details (if applicable)</label>
+                    <textarea id="orderDetails" name="orderDetails" placeholder="Please describe your order requirements, preferred styles, sizes, or any specific details..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" name="address" placeholder="Enter your complete delivery address..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required placeholder="Tell us more about your inquiry, feedback, or any questions you may have..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </main>
+
+        <aside class="contact-info-section">
+            <h2 class="section-title">Contact Information</h2>
+            
+            <div class="contact-info-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Phone</h3>
+                    <p><a href="tel:+923126710602">+92 312-6710602</a></p>
+                </div>
+            </div>
+
+            <div class="contact-info-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@uniqueboutique.com">info@uniqueboutique.com</a></p>
+                </div>
+            </div>
+
+            <div class="contact-info-item">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Address</h3>
+                    <p>Main Street, Fashion District<br>City Center, Pakistan</p>
+                </div>
+            </div>
+
+            <div class="contact-info-item">
+                <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="contact-details">
+                    <h3>Business Hours</h3>
+                    <p>Monday - Saturday: 9:00 AM - 8:00 PM<br>Sunday: 10:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+
+            <div class="business-hours">
+                <h3>Quick Contact</h3>
+                <p>For urgent inquiries or custom orders, please call us directly. We're always happy to help you find the perfect fashion solution!</p>
+            </div>
+        </aside>
+    </div>
+
+    <section class="map-section">
+        <h2 class="section-title">Find Us</h2>
+        <div class="map-placeholder">
+            <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-right: 1rem; color: #667eea;"></i>
+            Interactive Map Coming Soon
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Unique Boutique</h3>
+                <p>Founded by Mrs. Athar, Unique Boutique has been delivering high-quality fashion products since 2018. We specialize in traditional and contemporary garments, offering custom tailoring services to meet every customer's unique style preferences.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="app.html">Home</a></p>
+                <p><a href="app.html#products">Products</a></p>
+                <p><a href="Contact.html">Contact Us</a></p>
+                <p><a href="app.html#about">About Us</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <p>Stay updated with our latest collections and offers</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Unique Boutique. All rights reserved. | Designed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for fashion enthusiasts</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.firstName || !data.lastName || !data.email || !data.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Success message (in a real application, this would send the data to a server)
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
 </html>
