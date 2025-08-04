@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Status Indicator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #batteryTab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div id="batteryTab" class="bg-white p-4 rounded-lg shadow-lg text-sm max-w-xs">
+        <p id="batteryMessage" class="text-gray-800">Checking battery status...</p>
+        <div id="batteryLevel" class="mt-2">
+            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div id="batteryBar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+            </div>
+            <p id="batteryPercentage" class="text-center mt-1 text-gray-600">0%</p>
+        </div>
+    </div>
+
+    <script>
+        async function monitorBattery() {
+            if (!('getBattery' in navigator)) {
+                document.getElementById('batteryMessage').textContent = 'Battery Status API not supported';
+                return;
+            }
+
+            const battery = await navigator.getBattery();
+            const batteryTab = document.getElementById('batteryTab');
+            const batteryMessage = document.getElementById('batteryMessage');
+            const batteryBar = document.getElementById('batteryBar');
+            const batteryPercentage = document.getElementById('batteryPercentage');
+
+            function updateBatteryStatus() {
+                const level = (battery.level * 100).toFixed(0);
+                batteryBar.style.width = `${level}%`;
+                batteryPercentage.textContent = `${level}%`;
+
+                if (battery.charging) {
+                    batteryTab.classList.remove('hidden');
+                    batteryMessage.textContent = 'Battery is charging';
+                    batteryBar.classList.remove('bg-blue-600', 'bg-red-600', 'bg-green-600');
+                    batteryBar.classList.add('bg-blue-600');
+
+                    if (level >= 95) {
+                        batteryMessage.textContent = 'Battery above 95%! Please remove the plug.';
+                        batteryBar.classList.remove('bg-blue-600');
+                        batteryBar.classList.add('bg-green-600');
+                        showNotification('Battery above 95%! Please remove the plug.');
+                    }
+                } else {
+                    batteryTab.classList.remove('hidden');
+                    batteryMessage.textContent = 'Battery not charging';
+                    batteryBar.classList.remove('bg-blue-600', 'bg-red-600', 'bg-green-600');
+                    batteryBar.classList.add('bg-blue-600');
+
+                    if (level <= 20) {
+                        batteryMessage.textContent = 'Battery at 20% or below! Please connect to plug.';
+                        batteryBar.classList.remove('bg-blue-600');
+                        batteryBar.classList.add('bg-red-600');
+                        showNotification('Battery at 20% or below! Please connect to plug.');
+                    }
+                }
+            }
+
+            function showNotification(message) {
+                if (Notification.permission === 'granted') {
+                    new Notification(message);
+                } else if (Notification.permission !== 'denied') {
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            new Notification(message);
+                        }
+                    });
+                }
+            }
+
+            // Initial update
+            updateBatteryStatus();
+
+            // Event listeners for battery changes
+            battery.addEventListener('chargingchange', updateBatteryStatus);
+            battery.addEventListener('levelchange', updateBatteryStatus);
+        }
+
+        // Request notification permission and start monitoring
+        document.addEventListener('DOMContentLoaded', () => {
+            if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+                Notification.requestPermission();
+            }
+            monitorBattery();
+        });
+    </script>
+</body>
+</html>

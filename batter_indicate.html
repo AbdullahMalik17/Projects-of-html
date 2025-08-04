@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Battery Monitor</title>
+  <style>
+    #battery-alert {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-family: sans-serif;
+      font-size: 14px;
+      display: none;
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<div id="battery-alert"></div>
+
+<script>
+if ('getBattery' in navigator) {
+  navigator.getBattery().then(battery => {
+    const alertBox = document.getElementById('battery-alert');
+
+    function checkBatteryStatus() {
+      const pct = battery.level * 100;
+      if (battery.charging && pct >= 95) {
+        showAlert("🔌 Battery is full (" + pct.toFixed(0) + "%). You can unplug now.");
+      } else if (!battery.charging && pct <= 20) {
+        showAlert("⚠️ Battery low (" + pct.toFixed(0) + "%). Please plug in.");
+      } else {
+        hideAlert();
+      }
+    }
+
+    battery.addEventListener('levelchange', checkBatteryStatus);
+    battery.addEventListener('chargingchange', checkBatteryStatus);
+    checkBatteryStatus();
+
+    function showAlert(msg) {
+      alertBox.innerText = msg;
+      alertBox.style.display = 'block';
+    }
+
+    function hideAlert() {
+      alertBox.style.display = 'none';
+    }
+  }).catch(err => console.error("Battery API error:", err));
+} else {
+  console.warn("Battery Status API not supported in this browser.");
+}
+</script>
+
+</body>
+</html>
