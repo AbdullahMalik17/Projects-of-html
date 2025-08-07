@@ -1,0 +1,83 @@
+'use client'
+
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Menu, X, Home, ShoppingBag, Mail, Info } from 'lucide-react'
+
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  const navItems = [
+    { name: 'Home', href: '#home', icon: Home },
+    { name: 'Products', href: '#products', icon: ShoppingBag },
+    { name: 'Contact', href: '/contact', icon: Mail },
+    { name: 'About', href: '#about', icon: Info },
+  ]
+
+  return (
+    <motion.header 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white sticky top-0 z-50 shadow-lg"
+    >
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="flex justify-between items-center">
+          {/* Logo */}
+          <motion.a 
+            href="#"
+            className="font-playfair text-2xl font-bold"
+            whileHover={{ scale: 1.05 }}
+          >
+            Unique <span className="text-accent-400">Boutique</span>
+          </motion.a>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-8">
+            {navItems.map((item) => (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                className="flex items-center space-x-2 hover:text-accent-400 transition-colors duration-300 relative group"
+                whileHover={{ y: -2 }}
+              >
+                <item.icon size={18} />
+                <span>{item.name}</span>
+                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full"></div>
+              </motion.a>
+            ))}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <motion.nav
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden mt-4 space-y-4"
+          >
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="flex items-center space-x-2 py-2 hover:text-accent-400 transition-colors duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <item.icon size={18} />
+                <span>{item.name}</span>
+              </a>
+            ))}
+          </motion.nav>
+        )}
+      </div>
+    </motion.header>
+  )
+} 
