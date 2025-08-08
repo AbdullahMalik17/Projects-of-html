@@ -3,65 +3,15 @@
 import { motion } from 'framer-motion'
 import { Star, ShoppingCart, Eye } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { products } from '@/lib/products'
 
-const products = [
-  {
-    id: 1,
-    name: 'Traditional Gota Work',
-    description: 'Exquisite handcrafted gota work with premium fabric quality',
-    price: '₹2,500',
-    image: '/product1.jpg',
-    rating: 4.8,
-    reviews: 24,
-  },
-  {
-    id: 2,
-    name: 'Designer Collection',
-    description: 'Contemporary designs with traditional elegance',
-    price: '₹3,200',
-    image: '/product2.jpg',
-    rating: 4.9,
-    reviews: 31,
-  },
-  {
-    id: 3,
-    name: 'Bridal Collection',
-    description: 'Stunning bridal wear with intricate embroidery',
-    price: '₹15,000',
-    image: '/product3.jpg',
-    rating: 5.0,
-    reviews: 18,
-  },
-  {
-    id: 4,
-    name: 'Casual Wear',
-    description: 'Comfortable and stylish everyday wear',
-    price: '₹1,800',
-    image: '/product4.jpg',
-    rating: 4.7,
-    reviews: 42,
-  },
-  {
-    id: 5,
-    name: 'Party Wear',
-    description: 'Elegant party wear for special occasions',
-    price: '₹4,500',
-    image: '/product5.jpg',
-    rating: 4.6,
-    reviews: 29,
-  },
-  {
-    id: 6,
-    name: 'Chiffon Collection',
-    description: 'Light and elegant chiffon garments',
-    price: '₹2,000',
-    image: '/product6.jpg',
-    rating: 4.5,
-    reviews: 35,
-  },
-]
+type ProductsProps = {
+  title?: string
+  showViewAllButton?: boolean
+}
 
-export default function Products() {
+export default function Products({ title = 'Featured Collections', showViewAllButton = true }: ProductsProps) {
   return (
     <section id="products" className="card p-8">
       <motion.div
@@ -71,9 +21,7 @@ export default function Products() {
         transition={{ duration: 0.6 }}
         className="text-center mb-12"
       >
-        <h2 className="font-playfair text-4xl font-bold mb-4 gradient-text">
-          Featured Collections
-        </h2>
+        <h2 className="font-playfair text-4xl font-bold mb-4 gradient-text">{title}</h2>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
           Discover our handpicked collection of premium garments, each piece crafted with attention to detail and quality.
         </p>
@@ -99,13 +47,11 @@ export default function Products() {
                 />
               </div>
               <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="bg-white/90 p-2 rounded-full"
-                >
-                  <Eye size={20} className="text-gray-700" />
-                </motion.button>
+                <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="bg-white/90 p-2 rounded-full">
+                  <Link href={`/products/${product.id}`} aria-label={`View ${product.name}`}>
+                    <Eye size={20} className="text-gray-700" />
+                  </Link>
+                </motion.div>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
@@ -136,21 +82,25 @@ export default function Products() {
         ))}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="text-center mt-12"
-      >
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="btn-primary text-lg px-8 py-4"
+      {showViewAllButton && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-center mt-12"
         >
-          View All Products
-        </motion.button>
-      </motion.div>
+          <Link href="/products" className="inline-block">
+            <motion.span
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary text-lg px-8 py-4"
+            >
+              View All Products
+            </motion.span>
+          </Link>
+        </motion.div>
+      )}
     </section>
   )
 } 

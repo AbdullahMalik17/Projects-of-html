@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter, MessageCircle, Heart } from 'lucide-react'
+import Link from 'next/link'
 
 const contactInfo = [
   {
@@ -22,10 +23,10 @@ const contactInfo = [
 ]
 
 const quickLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Products', href: '#products' },
+  { name: 'Home', href: '/' },
+  { name: 'Products', href: '/products' },
   { name: 'Contact Us', href: '/contact' },
-  { name: 'About Us', href: '#about' },
+  { name: 'About Us', href: '/about' },
 ]
 
 const socialLinks = [
@@ -93,14 +94,14 @@ export default function Footer() {
             </h3>
             <div className="space-y-3">
               {quickLinks.map((link, index) => (
-                <motion.a
-                  key={index}
-                  href={link.href}
-                  className="block text-gray-300 hover:text-accent-400 transition-colors duration-300"
-                  whileHover={{ x: 5 }}
-                >
-                  {link.name}
-                </motion.a>
+                <motion.div key={index} whileHover={{ x: 5 }}>
+                  <Link
+                    href={link.href}
+                    className="block text-gray-300 hover:text-accent-400 transition-colors duration-300"
+                  >
+                    {link.name}
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>
